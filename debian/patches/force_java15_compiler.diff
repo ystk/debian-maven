@@ -1,0 +1,32 @@
+Description: Force modello and javac to use Java5 source.
+Author: Damien Raude-Morvan <drazzib@debian.org>
+Last-Update: 2012-01-21
+Forwarded: no
+--- a/pom.xml
++++ b/pom.xml
+@@ -431,6 +431,9 @@
+           <groupId>org.codehaus.modello</groupId>
+           <artifactId>modello-maven-plugin</artifactId>
+           <version>${modelloVersion}</version>
++          <configuration>
++<useJava5>true</useJava5>
++          </configuration>
+           <executions>
+             <execution>
+               <id>site-docs</id>
+@@ -475,6 +478,15 @@
+             <tryUpdate>true</tryUpdate>
+           </configuration>
+         </plugin>
++      <plugin>
++        <groupId>org.apache.maven.plugins</groupId>
++        <artifactId>maven-compiler-plugin</artifactId>
++        <version>2.0.2</version>
++        <configuration>
++          <source>1.5</source>
++          <target>1.5</target>
++        </configuration>
++      </plugin>
+       </plugins>
+     </pluginManagement>
+     <plugins>

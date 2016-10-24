@@ -1,0 +1,269 @@
+Description: Set default plugins versions to match packages in Debian.
+ We should find a way to conform to actual upstream standards (maybe
+ multiple maven plugins versions)
+Author: Damien Raude-Morvan <drazzib@debian.org>
+Last-Update: 2012-01-21
+Forwarded: not-needed
+--- a/maven-core/src/main/resources/META-INF/plexus/artifact-handlers.xml
++++ b/maven-core/src/main/resources/META-INF/plexus/artifact-handlers.xml
+@@ -55,7 +55,7 @@ problem.
+             <!-- START SNIPPET: pom-lifecycle -->
+             <phases>
+               <install>
+-                org.apache.maven.plugins:maven-install-plugin:2.3.1:install
++                org.apache.maven.plugins:maven-install-plugin:2.4:install
+               </install>
+               <deploy>
+                 org.apache.maven.plugins:maven-deploy-plugin:2.7:deploy
+@@ -91,25 +91,25 @@ problem.
+             <!-- START SNIPPET: jar-lifecycle -->
+             <phases>
+               <process-resources>
+-                org.apache.maven.plugins:maven-resources-plugin:2.5:resources
++                org.apache.maven.plugins:maven-resources-plugin:2.3:resources
+               </process-resources>
+               <compile>
+-                org.apache.maven.plugins:maven-compiler-plugin:2.3.2:compile
++                org.apache.maven.plugins:maven-compiler-plugin:2.5.1:compile
+               </compile>
+               <process-test-resources>
+-                org.apache.maven.plugins:maven-resources-plugin:2.5:testResources
++                org.apache.maven.plugins:maven-resources-plugin:2.3:testResources
+               </process-test-resources>
+               <test-compile>
+-                org.apache.maven.plugins:maven-compiler-plugin:2.3.2:testCompile
++                org.apache.maven.plugins:maven-compiler-plugin:2.5.1:testCompile
+               </test-compile>
+               <test>
+                 org.apache.maven.plugins:maven-surefire-plugin:2.10:test
+               </test>
+               <package>
+-                org.apache.maven.plugins:maven-jar-plugin:2.3.2:jar
++                org.apache.maven.plugins:maven-jar-plugin:2.4:jar
+               </package>
+               <install>
+-                org.apache.maven.plugins:maven-install-plugin:2.3.1:install
++                org.apache.maven.plugins:maven-install-plugin:2.4:install
+               </install>
+               <deploy>
+                 org.apache.maven.plugins:maven-deploy-plugin:2.7:deploy
+@@ -146,16 +146,16 @@ problem.
+             <!-- START SNIPPET: ejb-lifecycle -->
+             <phases>
+               <process-resources>
+-                org.apache.maven.plugins:maven-resources-plugin:2.5:resources
++                org.apache.maven.plugins:maven-resources-plugin:2.3:resources
+               </process-resources>
+               <compile>
+-                org.apache.maven.plugins:maven-compiler-plugin:2.3.2:compile
++                org.apache.maven.plugins:maven-compiler-plugin:2.5.1:compile
+               </compile>
+               <process-test-resources>
+-                org.apache.maven.plugins:maven-resources-plugin:2.5:testResources
++                org.apache.maven.plugins:maven-resources-plugin:2.3:testResources
+               </process-test-resources>
+               <test-compile>
+-                org.apache.maven.plugins:maven-compiler-plugin:2.3.2:testCompile
++                org.apache.maven.plugins:maven-compiler-plugin:2.5.1:testCompile
+               </test-compile>
+               <test>
+                 org.apache.maven.plugins:maven-surefire-plugin:2.10:test
+@@ -164,7 +164,7 @@ problem.
+                 org.apache.maven.plugins:maven-ejb-plugin:2.3:ejb
+               </package>
+               <install>
+-                org.apache.maven.plugins:maven-install-plugin:2.3.1:install
++                org.apache.maven.plugins:maven-install-plugin:2.4:install
+               </install>
+               <deploy>
+                 org.apache.maven.plugins:maven-deploy-plugin:2.7:deploy
+@@ -210,16 +210,16 @@ problem.
+             <!-- START SNIPPET: ejb3-lifecycle -->
+             <phases>
+               <process-resources>
+-                org.apache.maven.plugins:maven-resources-plugin:2.5:resources
++                org.apache.maven.plugins:maven-resources-plugin:2.3:resources
+               </process-resources>
+               <compile>
+-                org.apache.maven.plugins:maven-compiler-plugin:2.3.2:compile
++                org.apache.maven.plugins:maven-compiler-plugin:2.5.1:compile
+               </compile>
+               <process-test-resources>
+-                org.apache.maven.plugins:maven-resources-plugin:2.5:testResources
++                org.apache.maven.plugins:maven-resources-plugin:2.3:testResources
+               </process-test-resources>
+               <test-compile>
+-                org.apache.maven.plugins:maven-compiler-plugin:2.3.2:testCompile
++                org.apache.maven.plugins:maven-compiler-plugin:2.5.1:testCompile
+               </test-compile>
+               <test>
+                 org.apache.maven.plugins:maven-surefire-plugin:2.10:test
+@@ -228,7 +228,7 @@ problem.
+                 org.apache.maven.plugins:maven-ejb3-plugin:ejb3
+               </package>
+               <install>
+-                org.apache.maven.plugins:maven-install-plugin:2.3.1:install
++                org.apache.maven.plugins:maven-install-plugin:2.4:install
+               </install>
+               <deploy>
+                 org.apache.maven.plugins:maven-deploy-plugin:2.7:deploy
+@@ -285,26 +285,26 @@ problem.
+                 org.apache.maven.plugins:maven-plugin-plugin:2.9:descriptor
+               </generate-resources>
+               <process-resources>
+-                org.apache.maven.plugins:maven-resources-plugin:2.5:resources
++                org.apache.maven.plugins:maven-resources-plugin:2.3:resources
+               </process-resources>
+               <compile>
+-                org.apache.maven.plugins:maven-compiler-plugin:2.3.2:compile
++                org.apache.maven.plugins:maven-compiler-plugin:2.5.1:compile
+               </compile>
+               <process-test-resources>
+-                org.apache.maven.plugins:maven-resources-plugin:2.5:testResources
++                org.apache.maven.plugins:maven-resources-plugin:2.3:testResources
+               </process-test-resources>
+               <test-compile>
+-                org.apache.maven.plugins:maven-compiler-plugin:2.3.2:testCompile
++                org.apache.maven.plugins:maven-compiler-plugin:2.5.1:testCompile
+               </test-compile>
+               <test>
+                 org.apache.maven.plugins:maven-surefire-plugin:2.10:test
+               </test>
+               <package>
+-                org.apache.maven.plugins:maven-jar-plugin:2.3.1:jar,
++                org.apache.maven.plugins:maven-jar-plugin:2.4:jar,
+                 org.apache.maven.plugins:maven-plugin-plugin:2.9:addPluginArtifactMetadata
+               </package>
+               <install>
+-                org.apache.maven.plugins:maven-install-plugin:2.3.1:install
++                org.apache.maven.plugins:maven-install-plugin:2.4:install
+               </install>
+               <deploy>
+                 org.apache.maven.plugins:maven-deploy-plugin:2.7:deploy
+@@ -373,16 +373,16 @@ problem.
+             <!-- START SNIPPET: war-lifecycle -->
+             <phases>
+               <process-resources>
+-                org.apache.maven.plugins:maven-resources-plugin:2.5:resources
++                org.apache.maven.plugins:maven-resources-plugin:2.3:resources
+               </process-resources>
+               <compile>
+-                org.apache.maven.plugins:maven-compiler-plugin:2.3.2:compile
++                org.apache.maven.plugins:maven-compiler-plugin:2.5.1:compile
+               </compile>
+               <process-test-resources>
+-                org.apache.maven.plugins:maven-resources-plugin:2.5:testResources
++                org.apache.maven.plugins:maven-resources-plugin:2.3:testResources
+               </process-test-resources>
+               <test-compile>
+-                org.apache.maven.plugins:maven-compiler-plugin:2.3.2:testCompile
++                org.apache.maven.plugins:maven-compiler-plugin:2.5.1:testCompile
+               </test-compile>
+               <test>
+                 org.apache.maven.plugins:maven-surefire-plugin:2.10:test
+@@ -391,7 +391,7 @@ problem.
+                 org.apache.maven.plugins:maven-war-plugin:2.1.1:war
+               </package>
+               <install>
+-                org.apache.maven.plugins:maven-install-plugin:2.3.1:install
++                org.apache.maven.plugins:maven-install-plugin:2.4:install
+               </install>
+               <deploy>
+                 org.apache.maven.plugins:maven-deploy-plugin:2.7:deploy
+@@ -431,13 +431,13 @@ problem.
+                 org.apache.maven.plugins:maven-ear-plugin:2.5:generate-application-xml
+               </generate-resources>
+               <process-resources>
+-                org.apache.maven.plugins:maven-resources-plugin:2.4.3:resources
++                org.apache.maven.plugins:maven-resources-plugin:2.3:resources
+               </process-resources>
+               <package>
+                 org.apache.maven.plugins:maven-ear-plugin:2.6:ear
+               </package>
+               <install>
+-                org.apache.maven.plugins:maven-install-plugin:2.3.1:install
++                org.apache.maven.plugins:maven-install-plugin:2.4:install
+               </install>
+               <deploy>
+                 org.apache.maven.plugins:maven-deploy-plugin:2.7:deploy
+@@ -474,16 +474,16 @@ problem.
+             <!-- START SNIPPET: rar-lifecycle -->
+             <phases>
+               <process-resources>
+-                org.apache.maven.plugins:maven-resources-plugin:2.5:resources
++                org.apache.maven.plugins:maven-resources-plugin:2.3:resources
+               </process-resources>
+               <compile>
+-                org.apache.maven.plugins:maven-compiler-plugin:2.3.2:compile
++                org.apache.maven.plugins:maven-compiler-plugin:2.5.1:compile
+               </compile>
+               <process-test-resources>
+-                org.apache.maven.plugins:maven-resources-plugin:2.5:testResources
++                org.apache.maven.plugins:maven-resources-plugin:2.3:testResources
+               </process-test-resources>
+               <test-compile>
+-                org.apache.maven.plugins:maven-compiler-plugin:2.3.2:testCompile
++                org.apache.maven.plugins:maven-compiler-plugin:2.5.1:testCompile
+               </test-compile>
+               <test>
+                 org.apache.maven.plugins:maven-surefire-plugin:2.10:test
+@@ -492,7 +492,7 @@ problem.
+                 org.apache.maven.plugins:maven-rar-plugin:2.2:rar
+               </package>
+               <install>
+-                org.apache.maven.plugins:maven-install-plugin:2.3.1:install
++                org.apache.maven.plugins:maven-install-plugin:2.4:install
+               </install>
+               <deploy>
+                 org.apache.maven.plugins:maven-deploy-plugin:2.7:deploy
+@@ -529,16 +529,16 @@ problem.
+             <!-- START SNIPPET: par-lifecycle -->
+             <phases>
+               <process-resources>
+-                org.apache.maven.plugins:maven-resources-plugin:2.5:resources
++                org.apache.maven.plugins:maven-resources-plugin:2.3:resources
+               </process-resources>
+               <compile>
+-                org.apache.maven.plugins:maven-compiler-plugin:2.3.2:compile
++                org.apache.maven.plugins:maven-compiler-plugin:2.5.1:compile
+               </compile>
+               <process-test-resources>
+-                org.apache.maven.plugins:maven-resources-plugin:2.5:testResources
++                org.apache.maven.plugins:maven-resources-plugin:2.3:testResources
+               </process-test-resources>
+               <test-compile>
+-                org.apache.maven.plugins:maven-compiler-plugin:2.3.2:testCompile
++                org.apache.maven.plugins:maven-compiler-plugin:2.5.1:testCompile
+               </test-compile>
+               <test>
+                 org.apache.maven.plugins:maven-surefire-plugin:2.10:test
+@@ -547,7 +547,7 @@ problem.
+                 org.apache.maven.plugins:maven-par-plugin:par
+               </package>
+               <install>
+-                org.apache.maven.plugins:maven-install-plugin:2.3.1:install
++                org.apache.maven.plugins:maven-install-plugin:2.4:install
+               </install>
+               <deploy>
+                 org.apache.maven.plugins:maven-deploy-plugin:2.7:deploy
+--- a/maven-core/src/main/resources/META-INF/plexus/components.xml
++++ b/maven-core/src/main/resources/META-INF/plexus/components.xml
+@@ -106,7 +106,7 @@ under the License.
+         </phases>
+         <default-phases>
+           <clean>
+-            org.apache.maven.plugins:maven-clean-plugin:2.4.1:clean
++            org.apache.maven.plugins:maven-clean-plugin:2.5:clean
+           </clean>
+         </default-phases>
+         <!-- END SNIPPET: clean -->
+--- a/pom.xml
++++ b/pom.xml
+@@ -593,6 +593,7 @@
+           <plugin>
+             <groupId>org.apache.maven.plugins</groupId>
+             <artifactId>maven-surefire-plugin</artifactId>
++            <version>2.10</version>
+             <configuration>
+               <systemProperties combine.children="append">
+                 <property>

@@ -1,0 +1,14 @@
+pom.xml
+apache-maven/pom.xml
+
+maven-aether-provider/pom.xml --has-package-version
+maven-artifact/pom.xml --has-package-version
+maven-compat/pom.xml --has-package-version
+maven-core/pom.xml --has-package-version
+maven-embedder/pom.xml --has-package-version
+maven-model/pom.xml --has-package-version
+maven-model-builder/pom.xml --has-package-version
+maven-plugin-api/pom.xml --has-package-version
+maven-repository-metadata/pom.xml --has-package-version
+maven-settings/pom.xml --has-package-version
+maven-settings-builder/pom.xml --has-package-version

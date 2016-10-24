@@ -1,0 +1,46 @@
+Description: Explicit dependency on plexus-container-default
+ since FTBFS otherwise.
+Author: Damien Raude-Morvan <drazzib@debian.org>
+Last-Update: 2012-01-21
+Forwarded: no
+--- a/maven-model-builder/pom.xml
++++ b/maven-model-builder/pom.xml
+@@ -38,6 +38,10 @@
+       <artifactId>plexus-component-annotations</artifactId>
+     </dependency>
+     <dependency>
++      <groupId>org.codehaus.plexus</groupId>
++      <artifactId>plexus-container-default</artifactId>
++    </dependency>
++    <dependency>
+       <groupId>org.apache.maven</groupId>
+       <artifactId>maven-model</artifactId>
+     </dependency>
+--- a/maven-plugin-api/pom.xml
++++ b/maven-plugin-api/pom.xml
+@@ -49,6 +49,11 @@
+       </exclusions>
+     </dependency>
+     <dependency>
++      <groupId>org.codehaus.plexus</groupId>
++      <artifactId>plexus-container-default</artifactId>
++      <version>${plexusVersion}</version>
++    </dependency>
++    <dependency>
+       <groupId>org.sonatype.sisu</groupId>
+       <artifactId>sisu-inject-plexus</artifactId>
+     </dependency>
+--- a/pom.xml
++++ b/pom.xml
+@@ -274,6 +274,11 @@
+       </dependency>
+       <dependency>
+         <groupId>org.codehaus.plexus</groupId>
++        <artifactId>plexus-container-default</artifactId>
++        <version>${plexusVersion}</version>
++      </dependency>
++      <dependency>
++        <groupId>org.codehaus.plexus</groupId>
+         <artifactId>plexus-classworlds</artifactId>
+         <version>${classWorldsVersion}</version>
+       </dependency>

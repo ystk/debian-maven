@@ -1,0 +1,63 @@
+#!/usr/bin/make -f
+
+include /usr/share/cdbs/1/rules/debhelper.mk
+include /usr/share/cdbs/1/class/ant.mk
+
+PACKAGE              := $(DEB_SOURCE_PACKAGE)
+VERSION              := $(DEB_UPSTREAM_VERSION)
+JAVA_HOME            := /usr/lib/jvm/default-java
+DEB_JARS             := ant-trax
+DEB_ANT_CLEAN_TARGET := clean-bootstrap
+DEB_ANT_BUILD_TARGET := maven-compile
+DEB_ANT_ARGS         := -Dpackage=$(PACKAGE) -Dversion=$(VERSION) \
+                        -Dmaven.home=/usr/share/maven2/ \
+                        -Dmaven.repo.local=$(realpath $(DEB_BUILDDIR))/debian/tmp/maven-repo \
+                        -Dmaven.test.skip=true
+API_DOCS             := build/doc/api
+BASE_MODULES         := apache-maven maven-artifact-manager maven-artifact \
+			maven-core maven-error-diagnostics maven-model maven-monitor \
+			maven-plugin-api maven-plugin-descriptor maven-plugin-parameter-documenter \
+			maven-plugin-registry maven-profile maven-project maven-repository-metadata \
+			maven-settings maven-toolchain
+
+get-orig-source:
+	-uscan --download-version $(DEB_UPSTREAM_VERSION) --force-download --rename
+
+configure/$(PACKAGE)::
+	mh_patchpoms -p$(PACKAGE) --rules=debian/maven.buildRules
+
+makebuilddir/$(PACKAGE)::
+	install -d $(DEB_BUILDDIR)/debian/tmp/maven-repo
+	cp -rL /usr/share/maven-repo/* $(DEB_BUILDDIR)/debian/tmp/maven-repo/
+	-rm $(DEB_BUILDDIR)/maven-ant-tasks-2.1.1.jar
+	-ln -s /usr/share/java/maven-ant-tasks.jar $(DEB_BUILDDIR)/maven-ant-tasks-2.1.1.jar
+
+install/$(PACKAGE)::
+	mh_unpatchpoms -p$(PACKAGE)
+	
+	mh_installpoms -p$(PACKAGE)
+	mh_installjar -p$(PACKAGE) -l --usj-name=maven3-aether-provider     maven-aether-provider/pom.xml     maven-aether-provider/target/maven-aether-provider-$(VERSION).jar
+	mh_installjar -p$(PACKAGE) -l --usj-name=maven3-artifact            maven-artifact/pom.xml            maven-artifact/target/maven-artifact-$(VERSION).jar
+	mh_installjar -p$(PACKAGE) -l --usj-name=maven3-compat              maven-compat/pom.xml              maven-compat/target/maven-compat-$(VERSION).jar
+	mh_installjar -p$(PACKAGE) -l --usj-name=maven3-core                maven-core/pom.xml                maven-core/target/maven-core-$(VERSION).jar
+	mh_installjar -p$(PACKAGE) -l --usj-name=maven3-embedder            maven-embedder/pom.xml            maven-embedder/target/maven-embedder-$(VERSION).jar
+	mh_installjar -p$(PACKAGE) -l --usj-name=maven3-model               maven-model/pom.xml               maven-model/target/maven-model-$(VERSION).jar
+	mh_installjar -p$(PACKAGE) -l --usj-name=maven3-model-builder       maven-model-builder/pom.xml       maven-model-builder/target/maven-model-builder-$(VERSION).jar
+	mh_installjar -p$(PACKAGE) -l --usj-name=maven3-plugin-api          maven-plugin-api/pom.xml          maven-plugin-api/target/maven-plugin-api-$(VERSION).jar
+	mh_installjar -p$(PACKAGE) -l --usj-name=maven3-repository-metadata maven-repository-metadata/pom.xml maven-repository-metadata/target/maven-repository-metadata-$(VERSION).jar
+	mh_installjar -p$(PACKAGE) -l --usj-name=maven3-settings            maven-settings/pom.xml            maven-settings/target/maven-settings-$(VERSION).jar
+	mh_installjar -p$(PACKAGE) -l --usj-name=maven3-settings-builder    maven-settings-builder/pom.xml    maven-settings-builder/target/maven-settings-builder-$(VERSION).jar
+
+binary-post-install/$(PACKAGE)::
+	# compress manpages
+	find $(DEB_BUILDDIR)/debian/$(PACKAGE)/usr/share/maven/man -type f | xargs gzip -9v -n
+
+clean::
+	mh_clean
+	mh_unpatchpoms -p$(PACKAGE)
+	-rm -rf debian/tmp/mvn-repo
+	-rm $(DEB_BUILDDIR)/maven-ant-tasks-2.1.1.jar
+	-find . -name target -type d | xargs rm -rf
+
+# No documentation released yet.
+#binary-post-install/$(PACKAGE)-doc::

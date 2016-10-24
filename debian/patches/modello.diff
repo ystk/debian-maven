@@ -1,0 +1,54 @@
+Description: Manual set of modello 1.4.x classpath (for bootstrap)
+ because otherwise upstream try to use old version.
+Author: Damien Raude-Morvan <drazzib@debian.org>
+Last-Update: 2012-01-21
+Forwarded: not-needed
+--- a/build.xml
++++ b/build.xml
+@@ -111,12 +111,6 @@
+     </artifact:dependencies>
+     <delete file="${basedir}/dependencies.xml" />
+ 
+-    <!-- Pull the dependencies for Modello -->
+-    <artifact:dependencies pathId="modello.pathid" filesetId="modello.fileset">
+-      <localRepository path="${maven.repo.local}" />
+-      <dependency groupId="org.codehaus.modello" artifactId="modello-maven-plugin" version="${pom.properties.modelloVersion}" />
+-    </artifact:dependencies>
+-
+     <!-- Pull the dependencies for the MetadataGenerator CLI -->
+     <artifact:dependencies pathId="pmdg.pathid" filesetId="pmdg.fileset">
+       <localRepository path="${maven.repo.local}" />
+@@ -155,6 +149,24 @@
+   <target name="generate-sources" depends="pull" description="generates Java sources from Modello mdo model files">
+     <mkdir dir="bootstrap/target" />
+     <mkdir dir="bootstrap/target/generated-sources" />
++    
++    <path id="modello.pathid">
++      <fileset dir="/usr/share/java/">
++        <include name="plexus-build-api.jar"/>
++        <include name="plexus-container-default.jar"/>
++        <include name="classworlds.jar"/>
++        <include name="guava.jar"/>
++        <include name="xbean-reflect.jar"/>
++        <include name="plexus-classworlds.jar"/>
++        <include name="plexus-utils.jar"/>
++        <include name="plexus-compiler-api.jar"/>
++        <include name="plexus-compiler-javac.jar"/>
++        <include name="modello-core-1.4.x.jar"/>
++        <include name="modello-plugin-java-1.4.x.jar"/>
++        <include name="modello-plugin-xml-1.4.x.jar"/>
++        <include name="modello-plugin-xpp3-1.4.x.jar"/>
++      </fileset>
++    </path>
+ 
+     <macrodef name="modello-single-mode">
+       <attribute name="file" />
+@@ -191,7 +203,7 @@
+         <modello-single-mode file="@{file}" version="@{version}" mode="xpp3-writer" />
+       </sequential>
+     </macrodef>
+-
++    
+     <macrodef name="modello-ex">
+       <attribute name="file" />
+       <attribute name="version" default="1.0.0" />

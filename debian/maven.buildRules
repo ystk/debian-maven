@@ -1,0 +1,35 @@
+# keep the version for all Maven plugins as versionless plugins don't work
+* * maven-plugin *
+
+junit junit jar s/3\..*/3.x/ * *
+s/easymock/org.easymock/ easymock * s/.*/debian/ * *
+
+org.sonatype.sisu sisu-inject-plexus * s/.*/2.3.0/ * *
+
+org.apache.maven.wagon * jar s/.*/2.x/ * *
+
+org.codehaus.plexus plexus-classworlds * s/.*/2.x/ * *
+org.codehaus.plexus plexus-utils * s/.*/2.x/ * *
+org.codehaus.plexus plexus-container-default * s/.*/1.5.5/ * *
+org.codehaus.plexus plexus-component-metadata * s/.*/1.5.5/ * *
+org.codehaus.plexus plexus-component-annotations * s/.*/1.5.5/ * *
+
+org.apache.maven.plugins maven-clean-plugin * s/.*/2.3/ * *
+org.apache.maven.plugins maven-resources-plugin * s/.*/2.3/ * *
+org.apache.maven.plugins maven-surefire-plugin * s/.*/2.10/ * *
+org.apache.maven.plugins maven-jar-plugin * s/.*/2.4/ * *
+org.apache.maven.plugins maven-compiler-plugin * s/.*/2.5.1/ * *
+
+org.apache.maven apache-maven pom s/.*/3.0.5/ * *
+org.apache.maven maven-aether-provider jar s/.*/3.0.5/ * *
+org.apache.maven maven-artifact jar s/.*/3.0.5/ * *
+org.apache.maven maven-compat jar s/.*/3.0.5/ * *
+org.apache.maven maven-core jar s/.*/3.0.5/ * *
+org.apache.maven maven-embedder jar s/.*/3.0.5/ * *
+org.apache.maven maven-model-builder jar s/.*/3.0.5/ * *
+org.apache.maven maven-model jar s/.*/3.0.5/ * *
+org.apache.maven maven-plugin-api jar s/.*/3.0.5/ * *
+org.apache.maven maven-repository-metadata jar s/.*/3.0.5/ * *
+org.apache.maven maven-settings-builder jar s/.*/3.0.5/ * *
+org.apache.maven maven-settings jar s/.*/3.0.5/ * *
+org.apache.maven maven pom s/.*/3.0.5/ * *

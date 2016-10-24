@@ -1,0 +1,97 @@
+maven (3.0.5-3) unstable; urgency=high
+
+  * Team upload.
+  * Use a secure connection by default to download artifacts
+    from the Maven Central repository (Closes: #779331)
+
+ -- Emmanuel Bourg <ebourg@apache.org>  Fri, 27 Feb 2015 17:56:07 +0100
+
+maven (3.0.5-2) unstable; urgency=medium
+
+  [ Emmanuel Bourg ]
+  * Team upload.
+  * Standards-Version updated to 3.9.6 (no changes)
+  * Update Vcs-Browser and Homepage fields.
+
+  [ tony mancill ]
+  * Apply patch from Bas Couwenberg to bump plugin versions to 
+    match version in Debian.  (Closes: #770608)
+
+ -- tony mancill <tmancill@debian.org>  Sat, 20 Dec 2014 08:52:09 -0800
+
+maven (3.0.5-1) unstable; urgency=low
+
+  * Team upload.
+  * New upstream release (Closes: #704261)
+    - Refreshed the patches
+  * Updated modello.diff to use Guava instead of Google Collections
+    (Closes: #725588)
+  * Updated maven-clean-plugin version from 2.3 to 2.5
+  * Install generic 3.x artifacts in /usr/share/maven-repo (Closes: #698975)
+  * Renamed the jars in /usr/share/java to maven3-xxx.jar to avoid conflicts
+    with Maven 2
+  * Installed versionless jars in /usr/share/java
+  * debian/rules: Improved the clean target
+  * debian/orig-tar.sh:
+    - Use XZ compression for the upstream tarball
+    - Reworked to pull the sources from the Apache Git repository
+  * debian/watch: Updated to watch the tags on the Github mirror
+  * Build depend on debhelper >= 9
+
+ -- Emmanuel Bourg <ebourg@apache.org>  Mon, 21 Oct 2013 22:49:54 +0200
+
+maven (3.0.4-6) unstable; urgency=low
+
+  * Upload to unstable.
+  * d/control: Bump Standards-Version to 3.9.4 (no changes needed).
+
+ -- Damien Raude-Morvan <drazzib@debian.org>  Mon, 06 May 2013 01:42:33 +0200
+
+maven (3.0.4-5) experimental; urgency=low
+
+  [ tony mancil ]
+  * Fix typo in maven bash completion file. (Closes: #688696)
+    - Thanks to Oleksandr Gavenko.
+
+ -- Damien Raude-Morvan <drazzib@debian.org>  Wed, 28 Nov 2012 20:33:54 +0100
+
+maven (3.0.4-4) experimental; urgency=low
+
+  * Install Maven JAR into /usr/share/java and /usr/share/maven-repo to allow
+    usage by others packages.
+  * d/control: Bump Standards-Version to 3.9.3: no changes needed.
+  * d/copyright: Use copyright-format 1.0.
+
+ -- Damien Raude-Morvan <drazzib@debian.org>  Sun, 19 Aug 2012 00:00:17 +0200
+
+maven (3.0.4-3) unstable; urgency=low
+
+  * Use wagon 2.x to provide http/webdav access.
+
+ -- Damien Raude-Morvan <drazzib@debian.org>  Mon, 06 Feb 2012 22:31:23 +0100
+
+maven (3.0.4-2) unstable; urgency=low
+
+  * d/control: Add missing Vcs-* fields.
+  * d/control: Force B-D on fixed plexus-containers1.5.
+  * d/maven.rules: Fix FTBFS after a rebuild of plexus-containers by
+    targeting explicit version.
+
+ -- Damien Raude-Morvan <drazzib@debian.org>  Sun, 22 Jan 2012 15:04:14 +0100
+
+maven (3.0.4-1) unstable; urgency=low
+
+  * New upstream final release (same as RC5).
+  * Upload to unstable this time.
+  * Remove Michael, Ludovic and Torsten from Uploaders: I've added them by cut
+    and pasting from maven2 package, without their approval
+    (feel free to re-add yourself if you want).
+  * Refresh d/patches/dep_versions.diff.
+
+ -- Damien Raude-Morvan <drazzib@debian.org>  Sat, 21 Jan 2012 13:45:19 +0100
+
+maven (3.0.4~rc3-1) experimental; urgency=low
+
+  * New upstream major release (Closes: #592218).
+
+ -- Damien Raude-Morvan <drazzib@debian.org>  Mon, 19 Dec 2011 20:17:37 +0100

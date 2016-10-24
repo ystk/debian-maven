@@ -1,0 +1,7 @@
+modello.diff
+plugins_version.diff
+dep_versions.diff
+add_dependencies.diff
+force_java15_compiler.diff
+no_maven_assembly.diff
+secure-maven-central-access.diff
